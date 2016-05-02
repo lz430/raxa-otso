@@ -1,0 +1,45 @@
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700|Cardo:400,400italic,700);
+
+
+// The Fonts
+
+$secondaryFont:				'Montserrat', sans-serif;
+$primaryFont: 				'Cardo', serif;
+
+
+
+// The Colors
+$white:						#fff;
+$extralight:				#efefef;
+$light: 					#e9e9eb;
+
+$black: 					#1d1d1d;
+$dark:						#2A2C38;
+
+$grey: 						#818181;
+$darkgrey:					#434343;
+
+$highlight: 				#FF4056;	// red color
+$accent:					$highlight;
+
+
+
+// The Nav
+
+$bar-width: 				25px;
+$bar-height: 				4px;
+$bar-color: 				$black;
+
+
+
+
+
+// Misc Things to Customize the Template
+
+$store-grid-container:		175px;		// squaring the container
+$store-grid-image:			200px;		// squaring the image
+$shopping-cart-thumb:		125px;		// squaring the image on the checkout screen
+
+$blogPostThumbWidth: 		255px;		// blog post thumbnail image
+$blogPostFeaturedHeight:	160px;		// blog featured on the blog list, not blog page

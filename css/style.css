@@ -1,0 +1,475 @@
+/* -------------------------------------- *\
+    Fonts
+\* -------------------------------------- */
+
+@font-face {
+	font-family: 'futura_urw_extra_boldregular';
+	src: url('../fonts/futurat_bold-webfont.eot');
+	src: url('../fonts/futurat_bold-webfont.eot?#iefix') format('embedded-opentype'),
+	     url('../fonts/futurat_bold-webfont.woff2') format('woff2'),
+	     url('../fonts/futurat_bold-webfont.woff') format('woff'),
+	     url('../fonts/futurat_bold-webfont.ttf') format('truetype'),
+	     url('../fonts/futurat_bold-webfont.svg#futura_urw_extra_boldregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'futura_t_otregular';
+	src: url('../fonts/futurat-book-webfont.eot');
+	src: url('../fonts/futurat-book-webfont.eot?#iefix') format('embedded-opentype'),
+	     url('../fonts/futurat-book-webfont.woff2') format('woff2'),
+	     url('../fonts/futurat-book-webfont.woff') format('woff'),
+	     url('../fonts/futurat-book-webfont.ttf') format('truetype'),
+	     url('../fonts/futurat-book-webfont.svg#futura_t_otregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/*Font declaration*/
+h1, h2, h3, h4, h5, h6{font-family: 'futura_urw_extra_boldregular';}
+p{font-family: 'futura_t_otregular';font-size:16px;}
+
+body{
+	overflow-x:hidden;
+	font-family: 'futura_t_otregular';
+}
+header{
+	background:url(../images/homepage.jpg) no-repeat;
+	background-size:cover;
+}
+header .row{
+	position: relative;
+}
+header .col-md-12{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+header .pull-right{
+	position: absolute;
+	right:2%;
+	top:0;
+}
+header .pull-right > a{
+	float:right;
+	clear:both;
+}
+header .create-quote{
+	font-size: 16px;
+	font-weight: bold;
+	padding:5px 25px;
+	text-transform: uppercase;
+}
+.tel{
+	color: #3c4542;
+	font-size: 27px;
+	font-weight: bold;
+	line-height: 40px;
+}
+header .tel:hover{
+	text-decoration: none;
+}
+.menu{
+	background:#6bc047;
+}
+.navbar-default{
+	background:none !important;
+}
+.top_part{
+		margin-top:200px;
+		margin-bottom:150px;
+	}
+
+@media only screen and (min-width:320px) and (max-width:1024px){
+	.right_part{
+		margin-top:50px;
+		margin-bottom:20px;
+	}
+	.promo_1{
+		margin-bottom:20px;
+	}
+	.copyright p{
+		line-height:10px;
+	}
+	.navbar-default .navbar-nav > li > a {
+	    color: #fff !important;
+		text-transform:uppercase;
+	}
+}
+
+	.navbar-default ul li a{
+		color:#fff !important;
+		text-transform:uppercase;
+		text-align:center;
+		font-weight:bold;
+		padding:15px 40px;
+	}
+	.nav .open > a, .nav .open > a:hover, .nav .open > a:focus{
+		background-color: #3c4542;
+	}
+	.menu_container .navbar-default ul li a:hover,
+	.menu_container .navbar-default ul li a:focus{
+		color: #fff !important;
+		background-color: #3c4542 !important;
+	}
+	.menu_container .navbar-nav > li > .dropdown-menu{
+		background: #6bc048;
+		padding: 0 !important;
+	}
+	.menu_container .dropdown-menu > li > a{
+		color:#fff;
+		border: 0 none;
+		box-shadow: none;
+	}
+	/*.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{
+		background: #3c4542;
+	}*/
+	@media only screen and (min-width: 900px){
+		.menu_container{
+			width:900px !important;
+		}	
+	}
+	
+	@media only screen and (max-width: 768px){
+		.active-menu{
+				background-size: contain !important;
+		}
+	}
+	.active-menu{
+		background:url(../images/menubg.png) center center no-repeat;
+		padding: 0px 60px !important;
+		background-size: cover;
+		box-shadow: none;
+		border: none;
+		margin-top:0;
+	}
+	.active-menu:hover a{
+		color: #fff !important;
+	}
+	.top_part{
+		margin-top:200px;
+		margin-bottom:150px;
+	}
+	.center-text{
+		text-align: center;
+	}
+	.footer_block{
+		margin-right:40px;
+	}
+
+@media only screen and (max-width: 600px){
+	header .pull-right{
+		position: relative;
+	}
+	header .col-md-12{
+		float:left;
+	}
+	.main_banner{
+		background-position: center center !important;
+		background-size:cover;
+		padding-left:0px !important;
+		padding-right:0px !important;
+	}
+	.right_part img{
+		display: none;
+	}
+}
+
+.main_banner{
+	background:url('../images/main-banner2.jpg') no-repeat ;
+	background-size:cover;
+	padding-left:0px !important;
+	padding-right:0px !important;
+}
+.left_part h3{
+	background:url(../images/left.png) no-repeat left center;
+	padding-left:100px;
+	height:64px;
+	font-size:45px;
+	line-height:38px;
+	color:#fff;
+	text-transform:uppercase;
+	font-weight:bold;
+}
+.bottom_part{
+	background:rgba(107,192,71,0.8);
+	text-align:center;
+	color:#fff;
+	padding:15px 0px;
+}
+.bottom_part p{
+	color:#fff;
+}
+.mycontainer{
+	width:960px !important;
+	margin:0 auto !important;
+}
+.promo{
+	padding-left:0px !important;
+	padding-right:0px !important;
+	margin-top:20px;
+}
+.promo .col-lg-2{
+	padding: 0;
+}
+.promo_1{
+	background:#3c4542;
+	padding:20px 0px;
+	min-height: 172px;
+}
+.promo_1 img{
+	margin:0 auto;
+}
+.promo_1 i{
+	color:#575d5d;
+	font-size:120px;
+	
+}
+.promo_1 p{
+	text-align:center;
+	color:#fff;
+	font-size:16px;
+	text-transform:uppercase;
+}
+
+.featured{
+	text-align:center;
+}
+.featured h3{
+	font-weight:bold;
+	font-size:32px;
+	text-transform:uppercase;
+	color: #3c4542;
+}
+.contact{
+	background:#6bc047;
+	color:#fff;
+	margin-top:20px;
+	
+}
+.contact h3{
+	font-weight:bold;
+	font-size:32px;
+	text-transform:uppercase;
+	line-height:40px;
+}
+footer{
+	background:#3c4542;
+	padding:20px 0;
+}
+label{
+	color:#fff;
+	font-size:14px;
+}
+
+.border h4{
+	border-bottom:#6bc049 4px solid;
+	width:120px;
+	color:#fff;
+	font-size:14px;
+	letter-spacing:1px;
+	text-transform:uppercase;
+	font-weight:bold;
+	padding-bottom:6px;
+	
+}
+.border p{
+	margin:-26px 0px 14px 31px;
+	color:#fff;
+	font-size:14px;
+}
+.border i{
+	color:#fff;
+	font-size:14px;
+}
+
+.footer_nav{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+.footer_nav li a{
+	color:#fff;
+}
+
+.bottom_footer{
+	background:#6bc047;
+	padding-bottom: 50px;
+}
+.bottom_footer li:first-of-type{
+	color: #fff;
+}
+.bottom_footer a{
+	float:left;
+	clear:both;
+}
+.bottom_footer .tel{
+	font-size: 12px;
+}
+.bottom_footer .email{
+	clear:both;
+	color: #fff;
+}
+.bottom_footer .sitemap-links h3{
+	color: #fff;
+	text-transform: uppercase;
+}
+.bottom_footer .sitemap-links a{
+	color: #3c4542;
+	text-decoration: underline;
+}
+
+.bottom_footer .sitemap-links .privacy-menu {
+	margin-top:20px;
+}
+.bottom_footer .sitemap-links .privacy-menu a{
+	text-decoration: none;
+}
+.bottom_footer .sitemap-links{}
+.bottom_footer .sitemap-links{}
+.bottom_footer .sitemap-links{}
+
+
+.copyright p{
+	line-height:60px;
+}
+.privecymenu .navbar-default ul li a{
+	line-height:60px !important;
+	color:#3c4542 !important;
+	padding:0px 50px !important;
+}
+footer .text-center{
+	color:#fff;
+	margin:0 auto 10px;
+	text-transform: uppercase;
+}
+footer form input,
+footer form textarea{
+	width: 100%;
+	padding: 5px;
+}
+footer form .submit{
+	background:#6bc047;
+	padding:5px 45px;
+	border-radius:0;
+	border:none;
+	color:#fff;
+	margin:20px auto 0;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.btn-primary{
+	background: #6bc048;
+	color: #fff;
+	border: 0 none;
+	border-radius: 0;
+}
+.btn-primary:hover, 
+.btn-primary:active{
+	background: #6bc048;
+}
+.btn-secondary{
+	background: #3c4542;
+	color: #fff;
+	font-size: 10px;
+	border-radius: 0;
+	border:1px solid #ccc;
+}
+.btn-secondary:hover, 
+.btn-secondary:active{
+	color:#fff;
+}
+.btn-secondary i{
+	padding-right:5px;
+}
+.btn-landing{
+	text-transform: uppercase;
+	padding:5px 25px;
+	background: #6bc048;
+	color: #fff;
+	border: 0 none;
+	border-radius: 0;
+	font-family: 'futura_urw_extra_boldregular';
+}
+
+/* -------------------------------------- *\
+    Inner pages
+\* -------------------------------------- */
+.landing, .single{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+.callout-gray{
+	background: #3d4642;
+	color: #fff;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	padding: 25px 0;
+}
+.heading{
+	text-transform: uppercase;
+}
+.sub-heading{
+	color:#6bc048;
+	margin:25px 0 15px;
+	text-transform: uppercase;
+	font-size: 24px;
+}
+h5.sub-heading{
+	font-size: 18px;
+	font-family: 'futura_t_otregular';
+}
+.landing img{
+	margin:0 auto;
+}
+.inner-banner{
+	background: #3c4542;
+	height: 175px;
+}
+.inner-callout{
+	background: #6bc048;
+	color: #fff;
+	padding: 10px 0;
+}
+.inner-callout h2{
+	text-transform: uppercase;
+	font-size: 26px;
+	font-weight: bold;
+}
+.inner-callout p{
+	font-family: 'futura_t_otregular';
+	font-size: 20px;
+	font-weight: normal;
+}
+p.indent{
+	margin-left:10px;
+}
+.inner-callout a{
+	color:#fff;
+	text-decoration: underline;
+}
+p a{
+	color: #67b645;
+}
+.no-list{
+	list-style:none;
+	list-style-image: none;
+	margin:10px 0;
+	padding:0;
+}
+.no-list li{
+	list-style:none;
+	font-size:12px;
+}
+.contact-us .email{
+	display: block;
+	clear:both;
+	color: #6bc048;
+	font-size: 20px;
+	font-family: 'futura_urw_extra_boldregular';
+}
+.single .col-md-6 + .col-md-6{
+	margin-top: 24px;
+}

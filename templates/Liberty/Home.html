@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title><$pagetitle/$> | <$websitename/$></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">   
+    <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" name="viewport" />
+	
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+	
+	<!-- Hotjar Tracking Code for http://www.publishpath.com -->
+	<script>
+	    (function(h,o,t,j,a,r){
+	        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+	        h._hjSettings={hjid:130897,hjsv:5};
+	        a=o.getElementsByTagName('head')[0];
+	        r=o.createElement('script');r.async=1;
+	        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+	        a.appendChild(r);
+	    })(window,document,'//static.hotjar.com/c/hotjar-','.’+’js?sv=');
+	</script>
+	
+    <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+    <link rel="stylesheet" type="text/css" href="reset.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/> 
+</head>
+
+<body id="body" class="home" data-cmsadmin-layout-base="true">
+<div class="container">
+	<$include virtual="header.inc"/$>
+	<div class="content" id="content" data-cmsadmin-layout-wrapper="true">
+		<div class="feature" id="feature" data-cmsadmin-layout-content-extra="true">
+			<$region name="feature"$><$/region$>	
+		</div>
+		<div class="main-content">
+			<div class="spotlight">
+				<div class="box">
+					<$region name="main"$><$/region$>
+				</div>
+				<div class="box">
+					<$region name="sidebar"$><$/region$>
+				</div>
+				<div class="box">
+					<$region name="sidebar_a"$><$/region$>
+				</div>
+			</div>
+			<div class="two-column">
+				<div class="left">
+					<$region name="misc"$><$/region$>
+				</div>
+				<div class="right">
+					<$region name="misc_a"$><$/region$>
+				</div>
+			</div>
+			<div class="one-column">
+				<$region name="full"$><$/region$>
+			</div>	
+		</div>
+		<div class="special">
+			<$region name="special"$><$/region$>	
+		</div>
+		<div class="bottom-content" id="bottom-content">
+			<div class="spotlight" id="spotlight" data-cmsadmin-layout-sidebar-b="true">
+				<div class="box">
+					<$region name="spotlight"$><$/region$>
+				</div>
+				<div class="box">
+					<$region name="spotlight_a"$><$/region$>
+				</div>
+				<div class="box">
+					<$region name="spotlight_b"$><$/region$>
+				</div>
+			</div>
+			<div class="two-column">
+				<div class="left">
+					<$region name="bottom"$><$/region$>
+				</div>
+				<div class="right">
+					<$region name="bottom_a"$><$/region$>
+				</div>
+			</div>
+			<div class="one-column">
+				<$region name="full_a"$><$/region$>
+			</div>	
+		</div>
+	</div>
+	<footer>
+		<$include virtual="footer.inc" /$>
+	</footer>
+</div>
+
+
+</body>
+</html>

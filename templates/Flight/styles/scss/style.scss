@@ -1,0 +1,1915 @@
+/* Flight - By LightCMSs */
+
+
+// calling other files, come in files...
+@import "bourbon";
+@import "reset";
+@import "variables-mixins";
+
+
+
+
+
+
+/* ANIMATIONS
+------------------------------------------------------------ */
+
+// zoom
+@include keyframes(zoominlogin) {
+	  0% { transform: scale(0); }
+	 75% { transform: scale(1.1); }
+	100% { transform: scale(1); }
+}
+
+@include keyframes(fade) {
+	  0% { opacity: 0;  @include transform(translateY(-50px)); }
+	 40% { opacity: .6; @include transform(translateY(10px)); }
+	100% { opacity: 1;  @include transform(translateY(0)); } 
+}
+
+
+
+
+// BODY and CONTAINERS
+// ------------------------------------------------------------ 
+
+html {
+	height: 100%;
+	min-height: 100%;
+}
+
+body {
+    font: 300 75%/2 $primaryFont;
+    color: $darkgrey;
+	background: $white url(../../images/mountain-bg.jpg) fixed no-repeat top center;
+	background-size: cover;
+	text-rendering: optimizeLegibility;
+	height: 100%;
+	
+	&.scroll {
+		overflow: hidden;
+	}
+}
+
+
+.width,
+article { // setting width
+	width: 100%;
+	max-width: 960px; 
+	margin: 0 auto; 
+	position: relative;
+	
+	@media screen and (max-width: 960px) {	
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+}
+
+
+
+
+
+
+
+// SELECTION AND LINKS
+// ------------------------------------------------------------ 
+
+::selection {
+	background: $highlight; 
+	color: $white;
+}
+
+::-moz-selection {
+	background: $highlight; 
+	color: $white;
+}
+
+
+.contents a { // generic look/feel for links
+	color: $black;
+	text-decoration: underline;	
+	@include transition(all 0.55s ease-in-out);
+	
+	&:hover {
+		color: $highlight;
+	}
+}
+
+
+
+
+
+
+// HEADINGS
+// ------------------------------------------------------------
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+	margin: 0 0 30px; 
+	font-family: $secondaryFont;
+    color: $black;	
+	line-height: 1.2;
+	font-weight: 700;
+	
+	a {
+		color: inherit;
+		
+		&:hover {
+			color: $highlight;
+		}
+	}		
+	 	
+	&.title { // titles
+		font-size: 18px;
+		font-weight: 700;
+		text-transform: uppercase;
+		position: relative;
+		margin-bottom: 50px;
+		
+		&::after {
+			content: "";
+			display: block;
+			position: absolute;
+			bottom: -15px;
+			background: $highlight;
+			width: 40px;
+			height: 5px;
+		}
+	}
+}
+		
+	h1 {
+		font-size: 45px;
+	}
+		
+	h2 {
+		font-size: 35px;
+	}	
+		
+	h3 {
+		font-size: 35px;
+		color: $highlight;
+	}
+	
+	h4 {
+		font-size: 25px;
+	}	
+		
+	h5 {
+		font-size: 20px;
+	}
+	
+
+
+
+
+// GENERAL CALLINGS
+// ------------------------------------------------------------
+
+.contents {
+	font-size: 18px; 
+	
+	p {
+		margin: 0 0 40px 0;
+	}  
+	
+	.element {
+		margin: 0 0 60px 0;
+		
+		p:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+
+// blockquote
+blockquote {
+	border-left: 6px solid $dark;
+	margin: 0 0 40px 0;
+	padding: 10px 0 10px 20px;
+	font-size: 110%;
+}   
+
+
+// images
+.contents img {
+	vertical-align: bottom;
+	
+	@media screen and (max-width: 480px) {	
+		max-width: 100%;
+		height: auto;
+	}	
+}
+
+
+// lists
+.element ol {
+	list-style: decimal; 
+	margin: 0 0 40px 45px;
+	
+	li {
+		margin-bottom: 5px; 
+	}
+}	
+		
+.element ul,
+.postBody ul {
+	list-style: square;
+	margin: 0 0 40px 45px;	
+	
+	li {
+		margin-bottom: 5px;
+	}
+}
+	
+
+// inputs and "forms"
+input,
+textarea,
+select {
+	font: 300 16px/1.5 $primaryFont;
+	color: #777;
+	background: $white; 
+	border: 1px solid #ddd !important;
+	@include transition(all 0.5s ease-in-out);
+	
+	&:focus {
+		outline: 0;
+		-moz-outline-style: none;
+		border-color: #bbb !important;
+	}
+}
+
+.donationElement p a,
+.button-default { // for @extend on buttons
+	font: 15px/2 $secondaryFont;
+	background: $highlight;
+	display: inline-block;
+	color: $white;
+	padding: 10px 25px;
+	text-transform: uppercase;
+	border: none !important;
+	margin-right: 20px;
+	width: auto !important;
+	text-decoration: none;
+	border-radius: 0;
+	@include transition(all 0.5s ease-in-out);
+	
+	&:hover {
+		background: darken($highlight, 25%);
+		color: $white;
+	}
+	
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+}
+
+
+// tables
+table {
+	border-collapse: collapse;
+    margin: 15px 0 40px;
+	max-width: 100%;
+	background: $light;
+
+	tr:nth-child(even) {
+		background: $white;
+	}
+
+	th {
+		background: $darkgrey;
+		color: $white;
+		font: 400 18px/1.3 $secondaryFont;
+		text-align: left;
+		padding: 15px;
+	}
+
+	td {
+		padding: 15px;
+		font-size: 15px;		
+	}
+}
+
+
+// def lists
+dl {
+	margin-bottom: 40px;
+	
+	dt {
+		font: 700 18px/1.3 $secondaryFont;
+		
+	}
+}
+
+
+// pre and code
+pre {
+	margin-bottom: 40px;
+	white-space: pre-wrap; 
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+}
+
+code {
+	display: block;
+	margin-bottom: 40px;
+}
+
+
+// hr
+hr {
+	border: 1px solid $light; 
+	border-width: 0 0 1px; 
+	border-collapse: collapse; 
+	clear: both; 
+	margin: 40px 0; 
+} 
+	p hr {
+		margin: 0;
+	}
+
+
+
+
+
+// HEADER
+// ------------------------------------------------------------
+
+header {
+	
+	article {
+		position: relative;
+		min-height: 700px;
+		padding: 305px 0 50px;
+	}
+	
+	.cart-full {
+		display: block;
+		position: absolute;
+		top: 30px;
+		left: 50%;
+		margin-left: -15px;
+		background: url(../../images/cart.svg) no-repeat 0 0;
+		background-size: contain;
+		width: 30px;
+		height: 30px;
+		text-indent: -9999px;
+	}
+	
+	.logo {
+		text-align: center;
+		font-size: 5rem;
+		font-weight: 700;
+		line-height: 1;
+		margin: 0;
+		max-height: 150px;	
+		text-shadow: 5px 5px 0 rgba(0, 0, 0, .1);
+		@include transition(all 0.55s ease-in-out);
+	
+		@media screen and (max-width: 800px) {	
+			font-size: 4rem;
+		}
+				
+		a {
+			color: $black;
+		}
+	}
+}
+
+
+.sec-page header article {
+	min-height: 175px;
+	padding-top: 70px;
+	
+	.cart-full {
+		top: 15px;
+	}
+	
+	.logo {
+		font-size: 2.7rem;
+	}
+}
+
+
+
+
+
+
+
+
+
+// NAV
+// ------------------------------------------------------------
+
+nav {
+	background: $white;
+	margin: -250px 0 150px;
+	text-align: center;
+	
+	ul li {
+		display: inline-block;
+		font: 700 15px/1 $secondaryFont;
+		text-transform: uppercase;
+		position: relative;
+		
+		&:hover a,
+		&:focus a {
+			color: $highlight;
+		}
+		
+		a {
+			color: $black;
+			display: block;
+			padding: 40px 30px;
+			text-decoration: none !important;
+			@include transition(all 0.55s ease-in-out);
+			
+			&:hover {
+				color: $highlight;
+			}
+		}
+	}
+	
+	&.active {
+		position: fixed;
+		z-index: 101;
+		top: 0;
+		right: 0;
+		left: 0;
+		margin-top: 0;
+		
+		ul li a {
+			padding: 30px;
+		}
+		
+		.level2 {
+			top: 60px !important;
+		}
+	}
+	
+	.level2 {
+		position: absolute;
+		text-align: left;
+		z-index: 999;
+		top: 75px;
+		left: 0;
+		background-color: $light;
+		padding: 20px 30px;	
+		width: 220px;
+		display: none;
+
+		li {
+			margin: 0;
+			font-size: 14px;
+			text-transform: none;
+			display: block;
+		}
+
+		a {
+			color: $dark !important;
+			padding: 10px 0 !important;
+		}
+	
+		a:hover,
+		.selectedPage a,
+		.selectedPagePath a,
+		.selectedPageParent a {
+			color: $highlight !important;
+		}
+	}
+}
+
+	
+
+// Level 2	
+nav li:hover ul.level2, 
+nav li:focus ul.level2 {
+	display: block;
+    @include animation(fade .3s ease-in-out both);
+}
+
+
+
+
+	/* navigation responsive ------------------------------------ */	
+	@media screen and (max-width: 850px) {	
+		
+		nav {
+			background: $white url(../../images/menu.svg) no-repeat 50% 10px;
+			width: 100%;
+			height: 50px;
+			cursor: pointer;
+			z-index: 99999;
+			margin-left: auto;
+			margin-right: auto;
+			
+			ul {
+				position: fixed;
+				display: none;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				left: 0;
+				width: 100%;
+				margin: 0;
+				background: rgba(15%, 15%, 16%, .98);
+				float: none;
+				text-align: center;
+				overflow: auto;
+				z-index: 99999;
+				padding-top: 30px;
+			
+				&.active {
+					display: block;
+					cursor: default;
+
+				    @include animation(fade .3s ease-in-out both);
+				}
+			
+				&::before {
+					display: block;
+					position: fixed;
+					top: 10px;
+					right: 10px;
+					padding: 0;
+					content: "x";
+					color: #fff;
+					font: 200 40px/30px $secondaryFont;
+					cursor: pointer;
+					z-index: 9999;
+				}							
+		
+				li {
+					display: block;
+					text-align: center;
+					color: $white;
+					margin: 0;
+					padding: 0;
+				}
+			
+				a {
+					padding: 10px 0;
+					font-size: 20px;
+					font-weight: 600;
+					color: $white !important;
+				}
+			}
+		
+			/* level 2 / 3 */										
+			.level2,
+			.level3 {
+				position: static;
+				background-color: transparent;
+				padding: 0 20px 15px;
+				width: 100%;
+				min-width: 100% !important;
+				display: block !important;
+				left: auto !important;
+				right: auto !important;
+				border: none !important;
+				@include animation(none);
+						
+				&::before {
+					display: none;
+				}
+		
+				li {
+					margin-right: 0 !important;
+					display: block !important;
+				}
+			
+				a {
+					color: $white !important;
+					font-size: 15px;
+					font-weight: 500;
+					opacity: .7;
+				}
+			}
+		}
+	}
+
+
+
+
+
+
+// CONTENTS
+// ------------------------------------------------------------
+
+.contents {
+	padding: 250px 0 200px;
+	background: rgba(250, 250, 250, .99);
+	box-sizing: border-box;
+	position: relative;
+	z-index: 100;
+}
+
+
+
+// two column
+.two-column {
+	overflow: hidden;
+	clear: both;
+	
+	.box {
+		width: 47.5%;
+		float: left;
+		
+		@media screen and (max-width: 800px) {	
+			width: 100% !important;
+			float: none !important;
+		}
+	}
+	
+	.box:first-child {
+		margin-right: 5%;
+		
+		@media screen and (max-width: 800px) {	
+			margin: 0;
+		}
+	}
+}
+
+
+
+// three column
+.three-column {
+	overflow: hidden;
+	clear: both;
+	
+	.box {
+		width: 30%;
+		max-width: 300px;
+		display: block;
+		float: left;
+		
+		@media screen and (max-width: 800px) {	
+			width: 100%;
+			max-width: 100%;
+			float: none;
+			margin: 0;
+		}
+	}
+	
+	.box + .box {
+		margin: 0 5%; 
+		
+		@media screen and (max-width: 800px) {	
+			margin: 0;
+		}
+	}
+
+	.box + .box + .box {
+		margin: 0;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+// FOOTER
+// ------------------------------------------------------------
+
+footer {
+	display: block;
+	padding: 75px 0 100px;
+	text-align: center;
+	font: 16px/1 $secondaryFont;
+	color: $white;
+	
+	ul {
+		margin-bottom: 20px;
+		
+		 li {
+			float: none !important;
+			display: inline-block !important;
+		
+			a {
+				display: inline-block !important;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+------------------------------------------------------------------------------------
+CMS STYLES
+------------------------------------------------------------------------------------ 
+*/
+
+
+
+/* BLOG ITEM
+------------------------------------------------------------ */
+
+/* blogs listings */             
+.blogList {
+	
+	.postFeaturedImage { 
+		height: $blogPostFeaturedHeight;
+		overflow: hidden;
+		
+		img {
+			min-height: $blogPostFeaturedHeight;
+		}
+	}
+
+	ul {
+		margin: 0 0 40px; 
+		padding: 0; 
+	 
+		li {      
+			margin: 0 0 60px; 
+			padding: 0;
+		}	
+	
+		.postTitle {
+			margin-bottom: 0;
+		
+			a {
+				text-decoration: none;
+			}
+		}		  
+		
+		.postInfo {
+			font-size: 15px; 
+			color: $grey; 
+			margin-bottom: 0;
+			font-style: italic; 
+		
+			a {
+				color: $grey;
+			} 
+		}
+	
+		.postThumb {
+			width: $blogPostThumbWidth;
+			margin-bottom: 40px;
+	
+			@media screen and (max-width: 667px) {	
+				float: none;
+				width: 95%;
+				margin-bottom: 10px;
+			}
+		}
+	
+		.postThumb + .postContent {
+			margin-left: $blogPostThumbWidth + 30px;
+	
+			@media screen and (max-width: 667px) {	
+				margin-left: 0;
+			}
+		}  
+	}	
+}  
+
+
+.box .blogList ul { // making thumb play nice in the smaller content areas
+	
+	.postThumb { 
+		float: none;
+		width: 95%;
+		margin-bottom: 10px;
+	}
+	
+	.postThumb + .postContent  {
+		margin-left: 0;
+	}
+}
+
+
+.blogBack,	
+.rss {
+	display: none !important;
+} 
+      	                                                                 
+// for blog/calendar list items to still have list bullets 
+.blogList ul li ul, .eventsList ul li ul, .blogList ol li ul, .eventsList ol li ul {margin: 0 0 30px 45px !important;}  
+.blogList ul li li, .eventsList ul li li {list-style: circle !important; margin: 0 0 8px !important;}                                     
+
+
+
+
+/* post detail page */  
+.postViewInfo {
+	border-width: 0 0 0 0;  
+	padding: 15px 0 35px;    
+	color: darken($light, 20%);  
+	font-size: 16px; 
+	font-style: italic;
+}   
+
+// blog comments
+.commentsHead {
+	padding: 55px 0 25px;
+	color: $black;
+	
+	span {
+		font-size: 22px;
+		text-transform: uppercase;
+		font: 13px/2 $primaryFont;
+		
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+} 
+	
+div.comments {    	
+	dt.comment {
+		background: transparent;
+		margin: 0;
+		padding: 5px 0 5px 15px;
+		border: none;
+		border-left: 6px solid $light; 
+		font: 18px/2 $primaryFont;
+		color: $grey;   
+	
+		a {
+			text-decoration: none; 
+			font: 700 18px/2 $secondaryFont;
+		}   
+	}    
+
+	dd.comment {                      
+		background: transparent;        
+		margin: 0 0 55px;   
+		border: none;  
+		border-left: 6px solid $light; 
+		padding: 0 0 20px 15px; 
+				
+		.commentDate {
+			font-size: 15px; 
+			color: $grey;    
+			margin-bottom: -5px;
+			padding-top: 10px;         
+		} 
+	}
+	
+	dt.authorComment,
+	dd.authorComment { // blog owner has a different color
+		border-left-color: $light;  
+	}
+}
+
+// comments form 
+.commentsForm {
+	clear: both;  
+	background: $light;
+	padding: 40px 40px 10px; 	
+	max-width: 700px;
+
+	label, 
+	span {
+		display: block;    
+		font: 17px $primaryFont;   
+	    margin: 5px 15px 5px 0; 
+	} 
+	
+	h3.addComment + p + p + p + span + br,
+	h3.addComment + p + p + p + span + br + img + br + input + span {
+		display: none;
+	}
+
+	input, 
+	textarea { 
+		clear: both; 
+		border: none;
+		padding: 9px 10px; 
+		width: 90% !important; 
+	}  
+	
+	textarea {
+		width: 100% !important;
+	}
+
+	h3.addComment + p + p + p + span + br + img + br + input {
+		max-width: 150px;
+		margin: 15px 0 20px 0;
+	}
+
+	.submitComment {  
+		@extend .button-default;
+	}
+
+	.note {
+		display: none;
+	}
+}           
+
+
+
+
+
+
+
+/* EVENTS / CALENDAR 
+------------------------------------------------------------ */
+	  	
+/* calendar detail page */  
+.event {
+	h2 {
+		margin-bottom: 0;
+	}
+	
+	.eventDate {
+		margin: 0 0 30px !important; 
+		font-size: 15px; 
+		color: $grey; 
+		font-style: italic;
+	} 
+	
+	.eventTime {		
+		color: $grey; 
+	}         
+
+	.eventBack {
+		display: none;
+	} 
+}
+
+
+/* event list */	      
+.eventsList ul {
+	margin: 0 !important; 
+	padding: 0 !important; 
+	list-style: none;
+	
+	li { 
+		margin: 0 0 40px !important; 
+		padding: 0 !important;
+		
+		.eventDate {
+			margin: 0 0 5px 0; 
+			font-size: 15px; 
+			color: $grey; 
+			font-style: italic;
+		}	  
+	}
+	
+	li > a {
+		@extend h2;
+		@extend .postTitle;
+	}
+}  
+
+
+                            
+
+/* tabular */      
+.eventsCalendar {
+	margin: 0 0 60px; 
+	width: 100%;
+	position: relative;
+	
+	table {
+		border: none; 
+		border-color: $extralight !important; 
+		background-color: $extralight;
+		width: 100%; 
+		margin: 0 !important;	
+		
+		td {
+			padding: 0;
+		}		
+	}	 	 
+	
+	// title and arrows
+	.calendarTitle {
+		background: $light !important; 
+		height: 90px !important;
+		position: relative;
+	
+		td {
+			color: $black !important; 
+			background: $light !important; 
+			font: 700 22px/1 $secondaryFont !important; 
+			text-transform: uppercase;
+			padding: 20px 10px !important; 
+		}	
+	}		
+
+	.calendarNextPrevious:first-child a,
+	.calendarNextPrevious:last-child a  {
+	    background: url(../../images/more.svg) top right no-repeat !important;
+		background-size: contain !important;
+	    display: block;
+		text-indent: -9999px;
+	    height: 30px;
+	    width: 30px; 
+		top: 30px;
+		right: 10%;
+		position: absolute;
+	}
+		.calendarNextPrevious:first-child a {
+		    background: url(../../images/less.svg) top left no-repeat !important;
+			background-size: contain !important;
+			left: 10%;
+			right: auto;
+		}		
+			
+	// monday thru friday				
+	.calendarDayHeader {
+		color: $grey;	
+		background: $white;	
+		font-size: 12px; 
+		text-transform: uppercase; 
+		text-align: center; 
+		padding: 15px 0;                   
+		border-color: $white; 
+		border-top: 1px solid $light;  
+		border-bottom: 1px solid $light; 
+	}
+
+	.calendarWeekendDay,
+	.calendarOtherMonthDay,
+	.calendarDay,
+	.calendarToday {
+		vertical-align: top;
+		background: $extralight;
+		border: 0 !important;
+		border-bottom: 1px solid $extralight !important;
+		padding: 1.5em .5em !important;
+		font-size: 12px;
+	
+		a {
+			font-size: 14px;
+			color: $dark;
+			display: block;
+			margin-top: 15px;
+			margin-bottom: -5px;
+			text-decoration: none;
+		}
+	}			
+		.calendarOtherMonthDay {
+			color: lighten($grey, 25%);
+		}
+
+
+	// event time
+	.eventTime {
+		font-style: italic;
+		display: block;
+		padding: 10px 0 0 !important;
+		color: $grey;
+
+		&::before {
+			content: "" !important;
+		}
+	} 
+}
+
+
+
+
+
+
+
+/* FORMS
+------------------------------------------------------------ */
+
+.form_container {
+	margin: 20px 0 !important;	
+
+	.fieldItemInner,
+	.submitButtonContainer {
+		padding: 0 !important;
+	}
+
+	.fieldRow {
+		display: block;
+	}
+
+	.fieldBlock {
+		margin: 0 0 10px;
+		width: 98.5%;
+	}
+
+	.title {
+		font-size: 15px; 
+		margin-bottom: -15px !important; 
+	}
+
+	.textField, 
+	select { 
+	    color: $grey;
+		padding: 11px 13px;
+		margin: 0;
+	}   		
+		
+	select {
+		padding: 3px 5px; 
+		max-width: 90% !important;
+	}   
+
+	.choice-option {
+		background: $white;
+		display: inline-block !important;
+		padding: 10px 18px 10px 12px !important;
+		border: 1px solid $light;
+		margin: 0 12px 12px 0 !important;
+		@include transition(all 0.55s ease-in-out);
+		
+		input {
+			margin-right: 10px;
+		}
+
+		label {
+			font-size: 13px;
+			color: $dark !important; 
+		}
+
+		&:hover {
+			border-color: darken($light, 20%);
+		}
+	}
+
+	.fieldNote, 
+	.fieldName,
+	.fieldInstructions {
+		font-size: 13px !important;
+		font-style: italic !important;
+		margin: 5px 0 0 0;
+	}        
+
+	img {                     
+		display: block;  
+		max-width: 170px; 
+		max-height: 40px;  
+		margin-top: 10px;     
+		position: relative;
+		border: 2px solid $white;
+		z-index: 9;
+	}   	
+
+	.submitButton {  
+		@extend .button-default;
+	}	
+}
+
+// getting the widths right
+.type-text input,
+.type-address input,
+.type-email input,
+.type-website input,
+.type-number input,
+.type-captcha input,
+.type-fileupload input,
+.type-paragraph textarea {
+	width: 90% !important;
+}
+
+.type-name input {
+	width: 90% !important;
+}
+
+.type-date input,
+.type-phone input,
+.type-time input {
+	width: 70% !important;
+}
+
+.type-time select {
+	width: 100% !important;
+}
+
+.type-name .fieldBlock {
+	width: 47.5% !important;
+}
+
+.type-date .fieldBlock,
+.type-phone .fieldBlock,
+.type-time .fieldBlock {
+	width: 20% !important;
+}
+
+.type-address .fieldRow:nth-child(3) .fieldBlock {
+	width: 30%;
+}
+
+.type-address .fieldRow:nth-child(3) .fieldBlock input {
+	width: 80% !important;
+}
+
+.type-address .fieldRow:nth-child(3) .fieldBlock select {
+	width: 100% !important;
+}
+
+.fieldSelected {
+	background: transparent !important; 
+	border-color: transparent !important;
+}
+
+.fieldItemError {
+	padding-left: 10px !important;
+}
+
+
+// confirmation popup
+.confirmation-content {
+	height: 100px !important;
+	min-height: 200px;
+}
+
+.confirmation-content-message {
+	padding: 25px !important;
+	position: relative;
+
+	p {
+		margin-bottom: 20px;
+
+		a {
+			color: $black;
+			font-weight: normal;
+			text-decoration: underline;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+/* EVITE 
+------------------------------------------------------------ */	
+
+.EviteElement {  
+	@extend .commentsForm;
+	max-width: 500px;
+	
+	h4 {
+		margin-bottom: 0;
+	}
+
+	p {
+		margin-bottom: 5px;
+
+		label {	
+			font-weight: normal;
+			display: block;    
+			font-size: 15px;   
+		    margin: 5px 0 0 0; 
+		}
+		
+		span {
+			font-size: 16px;   
+		    margin: 0; 
+		}
+
+		em {
+			font-size: 13px;
+		}
+	}
+
+	input, 
+	textarea { 
+		clear: both; 
+		border: none;
+		padding: 9px 10px; 
+		width: 100% !important; 
+	} 
+	
+	img {
+		display: inline-block;
+		margin-bottom: 10px;
+	}
+
+	.EviteButton {  
+		@extend .button-default;
+	}	
+
+	.EvitePreview { 
+		background: $black;
+		display: inline-block;
+		padding: 5px 20px;
+		color: $white;
+		font-family: $primaryFont;
+		font-size: 12px;
+		text-transform: uppercase;
+		text-decoration: none;
+		
+		&:hover { 
+			background: $grey;
+		}
+	}
+}
+	
+	
+
+
+
+
+/* GALLERY
+----------------------------------------------------------*/
+
+// caption color
+html body#body form div.contents .sldw_caption h3,
+html body#body form div.contents .sldw_caption p {
+    color: $white !important; 
+}
+
+
+// light boxing
+#lcms_fancybox-overlay {
+	background-color: $white !important;
+}
+
+.lcms_fancybox-opened .lcms_fancybox-skin {
+	box-shadow: 0 0 0 $white !important;
+	border-radius: 0 !important; 
+}
+
+.lcms_fancybox-title-over-wrap {
+	background: $grey !important;
+}
+
+#lcms_fancybox-title > span {
+    display: block;
+    font-weight: 300;
+	font-size: 14px;
+    padding: 20px;
+	text-align: center;
+}
+
+#lcms_fancybox-desc {
+	padding-top: 15px !important;
+	display: block;
+	
+	h1, 
+	h2, 
+	h3, 
+	h4,
+	h5,
+	h6 {
+		color: $white !important;
+	}
+}
+
+
+
+
+
+
+
+
+
+/* LOGIN
+------------------------------------------------------------ */
+
+.loginElement {
+	background: $white;
+	width: 350px;
+	margin: 19% auto 0;
+	padding: 30px;
+	box-sizing: border-box;
+    @include animation(zoominlogin .8s ease-in-out both);
+
+	h1.title {
+		display: none;
+	}
+
+	input {
+		width: auto;
+		padding: 10px;
+		margin: 0;
+	}
+	
+	p {
+		margin-bottom: 20px;
+		font-size: 15px;
+		
+		&.forgot {
+			margin-bottom: 0;
+			font-size: 13px;
+			
+			a {
+				color: $grey;
+				
+				&:hover {
+					color: $dark;
+				}
+			}
+		}
+	}
+
+	.remember {
+		font-size: 13px;
+		color: $grey;
+
+		input {
+			margin-right: 10px;
+		}
+	}
+
+	.button {
+		@extend .button-default;
+	} 
+}
+
+
+
+
+
+
+
+
+/* SHOPPING CART & CHECKOUT
+------------------------------------------------------------ */	
+
+// product list - details
+.productListing {
+    margin: 0 !important; 
+	width: 100% !important;
+	
+	li.product {
+	    margin: 0 0 75px 0 !important;
+	    padding: 0 0 35px 0 !important;
+	    width: 100%; 
+		border-bottom: 1px solid $light;
+		
+		&:last-child {
+			border-bottom: none;
+		}
+				
+		.productImageContainer {
+			margin: 0 10px 20px 0;
+			max-width: 25%;	
+			float: left;
+		
+			img {
+			    max-width: 100%;
+			}
+		
+			@media screen and (max-width: 468px) {	
+				width: 100%;
+				max-width: 100%;
+				height: auto;
+				float: none;
+				margin: 0 0 20px 0;
+			}
+		}
+	}	
+
+	h3.productTitle {
+		@extend h2;
+		@extend .postTitle;
+		
+		a {
+			text-decoration: none;
+		}
+	}	
+
+	h4.productType,
+	h4.productVendor {			
+		display: inline-block;
+	    font-size: 15px;
+	}
+
+	.productDescription {
+		padding-top: 15px;
+	}
+		
+	.productPriceContainer {
+		display: block !important;
+		
+		.productPrice {
+			font-size: 20px !important;
+			float: left;
+			margin: 10px 0 0;
+		}
+	}	
+	
+	// add to cart and select buttons
+	input.productAddToCart, 
+	a.productSelectOptions {
+		@extend .button-default;
+	    @include appearance(none);
+		font-size: 14px !important;
+		color: $white !important;
+		margin: 0 0 0 20px;
+		float: right;
+	}	
+
+	// unavailable product
+	.productUnavailable {	
+		font-size: 16px;
+		float: right;
+		color: $grey;
+		margin-top: 15px;
+	}			
+}	
+
+		
+
+
+
+// product listing - grid
+.productListing.productListingGrid {
+
+	li.product {		
+	    margin: 0 55px 25px 0 !important;
+		padding: 0 !important;
+	 	width: $store-grid-container; 
+		display: block;
+		float: left;
+		text-align: center;
+		border-bottom: none;
+		min-height: 350px;
+	
+		@media screen and (max-width: 468px) {	
+			width: 100%;
+			max-width: 100%;
+			height: auto;
+			margin-right: 0;
+			margin-bottom: 75px !important;
+			float: none;
+		}
+		
+		.productImageContainer {
+			max-width: $store-grid-container !important;
+			width: $store-grid-container;
+			height: $store-grid-container;	
+			margin: 0 0 20px 0;
+			text-align: center;
+			vertical-align: middle;
+			overflow: hidden;
+			float: none;
+			
+			img {
+				min-width: $store-grid-image;
+				min-height: $store-grid-image;
+		
+				@media screen and (max-width: 468px) {	
+					width: 100%;
+					min-width: 100%;
+					min-height: auto;
+				}
+			}
+		
+			@media screen and (max-width: 468px) {	
+				width: 100%;
+				max-width: 100% !important;
+				height: auto;
+				margin-bottom: 0;
+			}
+		}		
+
+		// getting the grids lined up right
+		&:last-child {
+			margin-right: 0 !important;
+		}
+		
+		&:nth-child(5n),
+		&:nth-child(2n+1),
+		&:nth-child(odd) {
+			clear: none;
+		}
+	}	
+
+	h3.productTitle {
+		@extend h2;
+		clear: both;
+		font-size: 14px !important;
+		margin: 0 0 10px 0;
+	}
+	
+	.productPriceContainer {
+		padding: 0 !important;
+		
+		.productPrice {
+			font-size: 13px !important;
+			float: none;
+			padding: 5px 10px !important;
+			border-radius: 20px;
+			background: $light;
+		}				
+	
+		.productUnavailable,
+		a.productSelectOptions,
+		.productAddToCart {
+			display: none !important;
+		}
+	}
+}	
+		
+		
+.box .productListing.productListingGrid {
+	li.product {
+		width: 100%;
+		max-width: 100%;
+		height: auto;
+		margin-right: 0;
+		margin-bottom: 75px !important;
+		float: none;
+		
+		.productImageContainer {	
+			width: 100%;
+			max-width: 100% !important;
+			height: auto;
+			margin-bottom: 0;
+			
+			img {
+				width: 100%;
+				min-width: 100%;
+				min-height: auto;
+			}
+		}	
+	}	
+}
+
+
+
+
+
+// product details
+.productDetailImageContainer {
+	margin: 0 40px 40px 0;
+	width: 100%;
+	max-width: 320px;
+
+	@media screen and (max-width: 468px) {	
+		max-width: 95% !important;
+	}
+	
+	.productDetailImageList .productDetailImage {
+		margin: 0; 
+		padding: 0;
+		width: 100% !important;	
+
+		@media screen and (max-width: 468px) {	
+			max-width: 95% !important;
+		}
+	}	
+	
+	.productDetailImageThumb {
+		padding: 0 !important;
+		margin-right: 26px !important;
+		margin-top: 10px !important;
+		
+		a {
+			padding: 0 !important;
+		}
+	
+		&:last-child {
+			margin-right: 0 !important;
+		}
+	}
+}
+	
+
+h2.productDetailTitle {
+	@extend h2;
+	@extend .postTitle;
+	margin-bottom: 5px;
+}
+
+h3.productDetailType,
+h3.productDetailVendor {
+	display: inline-block;
+	font-size: 15px !important;
+	
+}
+
+ul.productDetailVariantList {
+	height: 1px;
+	visibility: hidden;
+}
+
+.productDetailPriceContainer {
+	padding-top: 15px;
+	
+	.productDetailPrice {
+		@extend .productPrice;
+		padding: 5px 10px !important;
+		border-radius: 20px;
+		background: $light;
+	}
+}
+
+.productDetailAddToCartContainer {
+	border: 1px solid $light;
+	border-width: 1px 0;
+	padding: 15px 15px 10px;
+	margin-bottom: 30px;
+	width: 100%;
+	max-width: 450px;
+	
+	select,
+	#productDetailCartQuantity {
+		font-size: 13px;
+		padding: 8px 10px;
+		display: block;
+		margin-left: 10px;
+	}
+	
+	span.productDetailQuantity, 
+	#productDetailCartQuantity {
+		display: inline-block !important;
+	}
+
+	.productDetailAddToCart { 
+		@extend .button-default;
+		padding: 11px 22px !important;
+		font-size: 15px;  
+		margin: 0 0 0 20px !important;
+	}
+}	
+
+	
+.productDetailDescriptionTitle { // don't wanna see this
+    display: none;
+}
+
+.productDetailDescriptionContainer {
+	max-width: 450px !important;
+	//float: none !important;
+}
+
+
+
+	
+
+
+/* CHECKOUT */	
+.shoppingCartContainer {
+	position: relative;
+
+	.cartItemsCount,
+	.cartContinueShopping {
+		display: none !important;
+	}
+
+	.cartItems {
+		margin-bottom: 100px;
+	
+		th {
+			background: #f9f9f9 !important; 
+			color: $black !important; 
+			font-size: 15px;
+			padding: 10px !important;
+			border-bottom: 3px solid $light;
+		}
+	}	
+
+	.shoppingCart table tbody td {
+		border-bottom: 1px solid lighten($light, 3%) !important;
+		padding: 20px 10px !important;
+		background: #f9f9f9;
+		
+		&.cartImage img {
+			max-width: $shopping-cart-thumb !important;
+			max-height: $shopping-cart-thumb !important;
+		}
+	}
+
+	.cartDescription a {
+		text-decoration: none;
+		font: 700 16px $secondaryFont !important;
+	}
+
+	.cartQuantity {
+		input {
+			font-size: 14px;
+			width: 50px !important;
+			height: auto !important;
+			padding: 5px !important;
+			border-radius: 0 !important;
+		}
+		
+		a { // close button
+			background: transparent url(../../images/close.svg) no-repeat top left !important;
+			background-size: contain !important;
+			width: 20px;
+			height: 20px;
+			text-indent: -9999px;
+			display: inline-block;
+			margin: 5px 0 0 0;  
+			position: absolute;
+	
+			&:hover {
+				opacity: .75;
+			}
+			
+			
+		}
+	}
+
+	.cartDiscount, 
+	.cartSubtotal {
+		background: $light;
+		padding: 10px 20px !important;
+
+		label {
+			display: inline-block !important;
+			font-size: 12px !important;
+		}
+	}
+
+	.cartDiscount { // lining things up a bit better
+		padding-top: 20px !important;
+
+		input {
+			font-size: 13px !important;
+			max-width: 75px;
+			height: auto !important;
+			border-radius: 0 !important;
+			padding: 5px 10px !important;
+		}
+	
+		.applyCode { // apply discount code
+			background-color: $black !important;
+			display: inline-block;
+			background-image: none !important; 
+			border-radius: 0 !important;
+			padding: 1px 6px !important;
+			text-transform: uppercase !important;
+		}	
+	}
+
+	.cartSubtotalPrice {
+		font-size: 27px !important;
+	}
+
+
+	// cart update button
+	.cartUpdate {
+		background: transparent !important;
+		padding: 0 !important;
+		position: absolute;
+		right: 200px;
+		bottom: -85px !important;
+		font-size: 13px !important;
+		text-decoration: none !important;
+	}
+	
+	label.cartSubtotalLabel {
+		font-size: 17px !important;
+	}
+
+	// checkout button
+	.cartCheckoutButton {
+		border-radius: 0 !important;
+		font: 15px/2 $primaryFont !important;
+		background: $accent !important;
+		display: inline-block !important;
+		color: $white !important;
+		padding: 15px 40px !important;
+		text-transform: uppercase !important;
+		border: none !important;
+		width: auto !important;
+		position: absolute;
+		right: 0;
+		bottom: -85px !important;
+		height: auto !important;
+		@include transition(all 0.5s ease-in-out);
+	
+		input {
+			background-image: none !important;
+			text-transform: uppercase;
+			padding: 0 !important;
+			height: auto !important;
+			border: none !important;
+		}
+	
+		&:hover {
+			background: darken( $accent, 15% )
+		}
+	}
+}
+
+
+
